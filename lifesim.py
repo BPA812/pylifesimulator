@@ -17,16 +17,28 @@ currencies = ['Apsar','Ruble','Euro','Iek','Dinar','Kwanza','Dollar','Peso','Dra
 def generatecity():
     return prefixes[random.randint(0,len(prefixes) - 1)] + suffixes[random.randint(0,len(suffixes))]
 def generatecountry():
-    return prefixes2[random.randint(0,len(prefixes) - 1)] + suffixes2[random.randint(0,len(suffixes))]
+    return prefixes2[random.randint(0,len(prefixes2) - 1)] + suffixes2[random.randint(0,len(suffixes2))]
 def generatecounty():
-    return prefixes3[random.randint(0,len(prefixes) - 1)] + suffixes3[random.randint(0,len(suffixes))]
+    return prefixes3[random.randint(0,len(prefixes3) - 1)] + suffixes3[random.randint(0,len(suffixes3))]
+def generatecurrency():
+    return currencies[random.randint(0,len(currencies) - 1)]
 countries = [generatecountry()]
+currencies = [generatecurrency()]
 def generatecountries(x):
         for i in range(x):
             var1 = generatecountry()
             while var1 in countries:
                 var1 = generatecountry()
-            countries.append(generatecountry())
+                countries.append(generatecountry())
+            countries.append(var1)
+def generatecurrencies(x):
+        for i in range(x):
+            var2 = generatecurrency()
+            while var2 in countries:
+                var2 = generatecurrency()
+                countries.append(generatecurrency())
+            countries.append(var2)
+
 
 generatecountries(10)
 #Make Character
@@ -39,11 +51,10 @@ print('The following countries are countries that you can choose for your charac
 for i in range(len(countries)):
     print('     ' + countries[i])
     countryOC = '     '
-    while countryOC not in countries:
-        countryOC = input("Please choose a country from the list above: (Full Country Name):")
-        if countryOC not in countries:
-            print('Sorry, the country name that you entered is invalid, please try again.')
-money = 
+while countryOC not in countries:
+    countryOC = input("Please choose a country from the list above: (Full Country Name):")
+    if countryOC not in countries:
+        print('Sorry, the country name that you entered is invalid, please try again.')
 print(generatecity())
 print(generatecountry())
 print(generatecounty())
